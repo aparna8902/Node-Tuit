@@ -1,6 +1,7 @@
 const http = require('http');
 
 //req incoming
+//callback function invoked everytime someone tries to access the server
 const server =  http.createServer((req, res) => {
     if(req.url === '/'){
         res.end('Welcome to our home page!')
@@ -39,3 +40,21 @@ server.listen(5000) //what port our server listens to
 
 // node_modules, a folder created by npm, contains the dependencies 
 // example: lodash(a dependency)
+
+// we don't upload node_modules into git cuz they are way too huge
+/* if we have package.json already, the "npm install" will automatically install the dependencies
+   in the node_modules folder since they are given in package.json */
+// so npm and package.json are very important while sharing code
+
+// nodemon -> automatically restarts so we don't have to give "node <filename>" everytime - dev dependency
+/* Why dev dependency?
+   when we push it heroku we'll use something serious like PM2 to restart our application
+   So testing and other dependencies are used in dev dependencies - use it while creating
+   the app but once it's in production then we just share the dependencies that actually
+   the app is using and not the ones we used while we developed the app*/
+
+// EVENT LOOP DEFINITION
+/* The event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that 
+JavaScript is single-threaded — by offloading operations to the system kernel whenever possible.*/
+// javascript is single threaded
+
